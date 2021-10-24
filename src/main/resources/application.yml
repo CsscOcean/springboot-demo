@@ -1,0 +1,29 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    session:
+      timeout: 30m
+    encoding:
+      force: true
+      enabled: true
+      charset: UTF-8
+
+mybatis-plus:
+  configuration:
+    lazy-loading-enabled: true
+    cache-enabled: true
+    aggressiveLazyLoading: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+spring:
+  profiles:
+    active: "@activatedProperties@"
+  servlet:
+    multipart:
+      max-request-size: 50MB
+      max-file-size: 50MB
+
+logging:
+  register-shutdown-hook: true
+

@@ -1,0 +1,50 @@
+package demo.common.repository.po;
+
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Data;
+import lombok.Builder;
+
+/**
+ * 用户角色关联 实体类
+ *
+ * @author 水张哲
+ * @date 2021/10/23
+ */
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@TableName("s_user_re_role")
+public class UserReRole implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Schema(description = "用户角色关联id")
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
+
+    @Schema(description = "用户id")
+    private Long userId;
+
+    @Schema(description = "角色id")
+    private Long roleId;
+
+    @Schema(description = "创建日期")
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
+
+    @Schema(description = "修改日期")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
+
+
+}
