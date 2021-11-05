@@ -1,6 +1,5 @@
 package demo.system.security.manager;
 
-import demo.common.service.ResourceService;
 import demo.common.service.RoleReResourceViewService;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.FilterInvocation;
@@ -33,13 +32,10 @@ public class MyFilterInvocationSecurityMetadataSource implements FilterInvocatio
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
+        loadResourceDefine();
         AntPathRequestMatcher antPathMatcher;
         FilterInvocation filterInvocation = (FilterInvocation) o;
         HttpServletRequest request = filterInvocation.getRequest();
-        if (configAttributeMap == null) {
-            loadResourceDefine();
-        }
-        assert configAttributeMap != null;
         for (String url : configAttributeMap.keySet()) {
             antPathMatcher = new AntPathRequestMatcher(url);
             if (antPathMatcher.matches(request)) {

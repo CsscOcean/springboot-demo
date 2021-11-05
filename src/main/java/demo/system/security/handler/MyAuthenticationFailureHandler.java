@@ -1,6 +1,5 @@
 package demo.system.security.handler;
 
-import com.alibaba.fastjson.JSONObject;
 import demo.system.result.emun.ErrorCodeEnum;
 import demo.system.result.entity.JsonResult;
 import demo.system.result.entity.Result;
